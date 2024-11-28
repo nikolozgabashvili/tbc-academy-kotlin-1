@@ -1,13 +1,12 @@
 fun main() {
 
     do {
-        print("შეიყვანეთ x ცვლადის მნიშვნელობა: ")
-        val inputX: String = readlnOrNull() ?: break
-        print("შეიყვანეთ y ცვლადის მნიშვნელობა: ")
-        val inputY: String = readlnOrNull() ?: break
 
-        val x: Double = inputX.filter { char -> char.isDigit() }.toDoubleOrNull() ?: 0.0
-        val y: Double = inputY.filter { char -> char.isDigit() }.toDoubleOrNull() ?: 0.0
+        val inputX: String = getInputOrNull("შეიყვანეთ x ცვლადის მნიშვნელობა: ") ?: break
+        val inputY: String = getInputOrNull("შეიყვანეთ y ცვლადის მნიშვნელობა: ") ?: break
+
+        val x: Double = inputX.toDoubleOrZero()
+        val y: Double = inputY.toDoubleOrZero()
         val z: Double = x / y
 
         val displayX: String = x.toDisplayFormat()
@@ -15,8 +14,7 @@ fun main() {
         val displayZ: String = z.toDisplayFormat()
 
         println("X($displayX) და Y($displayY) განაყოფი არის: $displayZ")
-        print("გსურთ პროგრამის ხელახლა დაწყება <Y/N>? : ")
-        val answer: String = readlnOrNull() ?: break
+        val answer: String = getInputOrNull("გსურთ პროგრამის ხელახლა დაწყება <Y/N>? : ") ?: break
         if (answer.uppercase() != "Y") break
 
     } while (true)
@@ -25,3 +23,10 @@ fun main() {
 }
 
 fun Double.toDisplayFormat(): String = (if (this % 1 == 0.0) this.toInt() else this).toString()
+
+fun String.toDoubleOrZero(): Double = this.filter { char -> char.isDigit() }.toDoubleOrNull() ?: 0.0
+
+fun getInputOrNull(prompt: String): String? {
+    print(prompt)
+    return readlnOrNull()
+}
