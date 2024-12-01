@@ -13,7 +13,7 @@ class MyCalculator {
     }
 
     fun calculateEvenSum(number: Int = 100): Int {
-        return if (number <= 0) 0 else if (number % 2 == 0) number + calculateEvenSum(number - 1) else calculateEvenSum(
+        return if (number <= 0) 0 else if (number % 2 == 0) number + calculateEvenSum(number - 2) else calculateEvenSum(
             number - 1
         )
     }
@@ -25,7 +25,11 @@ class MyCalculator {
 
     fun reverseNumber(number: Int) = number.toString().reversed().toInt()
 
-    fun isPalindrome(text: String) = text == text.reversed()
+    fun isPalindrome(text: String): Boolean {
+        val formattedText = text.filter { it.isLetterOrDigit() }.uppercase()
+        return formattedText == formattedText.reversed()
+
+    }
 
 
     fun runTests() {
