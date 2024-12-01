@@ -1,6 +1,6 @@
 fun main() {
     val calculator = MyCalculator()
-    println(calculator.calculateGcd(0,10))
+    println(calculator.calculateGcd(0, 10))
     startCalculatorApp(calculator)
 }
 
