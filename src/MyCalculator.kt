@@ -18,7 +18,7 @@ class MyCalculator {
         )
     }
 
-    fun containsSymbol(string: String): Boolean {
+    fun containsDollarSign(string: String): Boolean {
         return string.contains('$')
 
     }

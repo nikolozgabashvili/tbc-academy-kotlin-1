@@ -76,7 +76,7 @@ fun reverseText(calculator: MyCalculator): Boolean? {
 
 fun checkInput(calculator: MyCalculator): Boolean? {
     val input = readInputOrNull("enter text: ") ?: return null
-    if (calculator.containsSymbol(input)) println("text contains char : $") else println("text does not contain char: $")
+    if (calculator.containsDollarSign(input)) println("text contains char : $") else println("text does not contain char: $")
     return true
 }
 
